@@ -4,7 +4,7 @@ const books = require('../controllers/book.controller')
 
 /* GET home page. */
 router.get('/', async function (req, res, next) {
-	res.render('index.njk', { page_title: 'Local Library' })
+	res.render('index.njk', { page_title: 'Local Library App' })
 })
 // Create a new Customer
 router.post('/books', books.create)
