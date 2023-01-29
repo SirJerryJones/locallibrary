@@ -1,0 +1,26 @@
+{
+  "name": "locallibrary",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "devstart": "nodemon ./bin/www",
+    "serverstart": "SET DEBUG=express-locallibrary-tutorial:* & npm run devstart",
+    "build:css": "postcss tailwind.css -o public/stylesheets/style.css"
+  },
+  "dependencies": {
+    "autoprefixer": "^9.8.8",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^16.0.3",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "mysql": "^2.18.1",
+    "nunjucks": "^3.2.3",
+    "tailwindcss": "^3.2.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
