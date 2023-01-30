@@ -1,13 +1,24 @@
 const express = require('express')
+const app = express()
 const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const nunjucks = require('nunjucks')
 
+const session = require('express-session')
+app.use(
+	session({
+		secret: 'F%*h;Y/zm6-4Wv.<+ObfNFxO&$Q;D',
+		resave: true,
+		saveUninitialized: true,
+	})
+)
+
 const booksRouter = require('./routes/book')
 const usersRouter = require('./routes/users')
 
-const app = express()
+const auth = require('./middleware/auth')
+//app.use(auth)
 
 nunjucks.configure('views', {
 	autoescape: true,
@@ -23,7 +34,8 @@ app.use('/images', express.static((__dirname = 'public/images')))
 app.use('/css', express.static((__dirname = 'public/stylesheets')))
 app.use('/js', express.static((__dirname = '/public/js')))
 
-app.use('/books', booksRouter)
+//define routers
 app.use('/', usersRouter)
+app.use('/books', auth, booksRouter)
 
 module.exports = app

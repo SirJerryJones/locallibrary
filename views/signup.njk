@@ -3,7 +3,7 @@
 {% block content %}
     <main class="mx-auto flex min-h-screen w-full items-center justify-center bg-gray-900 text-white">
         <!-- component -->
-        <form action="/login" method="POST">
+        <form action="/register" method="POST">
             <section class="flex w-[30rem] flex-col space-y-10">
                 <div class="w-full m-0" role="img" aria-label="Local Library Logo">
                     <img class="w-10 h-10 md:w-24 md:h-auto md:rounded-none rounded-full mx-auto" src="/images/logo.webp" alt="Local Library" />
@@ -38,7 +38,9 @@
                            placeholder="Password"
                            class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none" />
                 </div>
-
+                {% if response.error %}
+                <div class="w-full rounded drop-shadow-[0_2px_2px_rgba(255,255,255,0.25)] text-lg {{response.errClass}} p-2">{{response.errMsg}}</div>
+                {% endif %}
                 <input type="submit" value="SIGN UP" class="transform rounded-sm bg-indigo-600 py-2 font-bold duration-300 hover:bg-indigo-400">
 
                 <p class="text-center text-lg">

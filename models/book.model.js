@@ -1,4 +1,4 @@
-const sql = require('../database/dbconn')
+const db = require('../database/dbconn')
 
 // constructor
 const Book = function (book) {
@@ -8,7 +8,7 @@ const Book = function (book) {
 }
 
 Book.create = (newBook, result) => {
-	sql.query('INSERT INTO books SET ?', newBook, (err, res) => {
+	db.query('INSERT INTO books SET ?', newBook, (err, res) => {
 		if (err) {
 			console.log('error: ', err)
 			result(err, null)
@@ -21,7 +21,7 @@ Book.create = (newBook, result) => {
 }
 
 Book.findById = (bookId, result) => {
-	sql.query(`SELECT * FROM books WHERE id = ${bookId}`, (err, res) => {
+	db.query(`SELECT * FROM books WHERE id = ${bookId}`, (err, res) => {
 		if (err) {
 			console.log('error: ', err)
 			result(err, null)
@@ -40,7 +40,7 @@ Book.findById = (bookId, result) => {
 }
 
 Book.getAll = (result) => {
-	sql.query('SELECT * FROM authors', (err, res) => {
+	db.query('SELECT * FROM authors', (err, res) => {
 		if (err) {
 			console.log('error: ', err)
 			result(null, err)
@@ -53,7 +53,7 @@ Book.getAll = (result) => {
 }
 
 Book.updateById = (id, book, result) => {
-	sql.query(
+	db.query(
 		'UPDATE books SET email = ?, name = ?, active = ? WHERE id = ?',
 		[book.email, book.name, book.active, id],
 		(err, res) => {
@@ -76,7 +76,7 @@ Book.updateById = (id, book, result) => {
 }
 
 Book.remove = (id, result) => {
-	sql.query('DELETE FROM books WHERE id = ?', id, (err, res) => {
+	db.query('DELETE FROM books WHERE id = ?', id, (err, res) => {
 		if (err) {
 			console.log('error: ', err)
 			result(null, err)
@@ -95,7 +95,7 @@ Book.remove = (id, result) => {
 }
 
 Book.removeAll = (result) => {
-	sql.query('DELETE FROM books', (err, res) => {
+	db.query('DELETE FROM books', (err, res) => {
 		if (err) {
 			console.log('error: ', err)
 			result(null, err)
