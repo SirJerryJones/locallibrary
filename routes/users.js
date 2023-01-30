@@ -71,14 +71,21 @@ router.post('/login', async (req, res) => {
 // register user in
 router.post('/register', async (req, res) => {
 	let firstName = req.body.firstName
-	let lastName = req.bodylastName || ''
+	let lastName = req.body.lastName || ''
 	let username = req.body.username
 	let password = req.body.password
 
 	if (username && password && firstName) {
+		let userdata = {
+			firstName: firstName,
+			lastName: lastName,
+			username: username,
+			password: password,
+		}
+
 		db.query(
-			'SELECT id, first_name, last_name FROM users WHERE email = ? AND password = ?',
-			[username, password],
+			'INSERT INTO books SET ?',
+			userdata,
 			function (error, results, fields) {
 				if (error) throw error
 

@@ -18,7 +18,6 @@ const booksRouter = require('./routes/book')
 const usersRouter = require('./routes/users')
 
 const auth = require('./middleware/auth')
-//app.use(auth)
 
 nunjucks.configure('views', {
 	autoescape: true,
