@@ -4,7 +4,7 @@ const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const nunjucks = require('nunjucks')
 
-const indexRouter = require('./routes/index')
+const booksRouter = require('./routes/book')
 const usersRouter = require('./routes/users')
 
 const app = express()
@@ -23,7 +23,7 @@ app.use('/images', express.static((__dirname = 'public/images')))
 app.use('/css', express.static((__dirname = 'public/stylesheets')))
 app.use('/js', express.static((__dirname = '/public/js')))
 
-app.use('/', indexRouter)
-app.use('/users', usersRouter)
+app.use('/books', booksRouter)
+app.use('/', usersRouter)
 
 module.exports = app

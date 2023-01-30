@@ -1,9 +1,14 @@
+{% extends "./template.njk" %} 
 
+{% block content %}
     <main class="mx-auto flex min-h-screen w-full items-center justify-center bg-gray-900 text-white">
         <!-- component -->
-        <form action="/validate" method="POST">
+        <form action="/login" method="POST">
             <section class="flex w-[30rem] flex-col space-y-10">
-                <div class="text-center text-4xl font-medium">{{ page_title }}</div>
+                <div class="w-full m-0" role="img" aria-label="Local Library Logo">
+                    <img class="w-10 h-10 md:w-24 md:h-auto md:rounded-none rounded-full mx-auto" src="/images/logo.webp" alt="Local Library" />
+                </div>
+                <div class="text-center text-4xl font-medium my-0 py-0">{{ page_title }}</div>
 
                 <div class="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
                     <input type="text"
@@ -21,16 +26,14 @@
                            class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none" />
                 </div>
 
-                <input type="submit" value="LOG IN" class="transform rounded-sm bg-indigo-600 py-2 font-bold duration-300 hover:bg-indigo-400">
-
-                <a href="#"
-                   class="transform text-center font-semibold text-gray-500 duration-300 hover:text-gray-300">FORGOT PASSWORD?</a>
+                <input type="submit" value="SIGN IN" class="transform rounded-sm bg-indigo-600 py-2 font-bold duration-300 hover:bg-indigo-400">
 
                 <p class="text-center text-lg">
                     No account?
-                    <a href="#"
+                    <a href="./signup"
                        class="font-medium text-indigo-500 underline-offset-4 hover:underline">Create One</a>
                 </p>
             </section>
         </form>
     </main>
+{% endblock %}

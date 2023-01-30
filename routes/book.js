@@ -2,14 +2,6 @@ const express = require('express')
 const router = express.Router()
 const books = require('../controllers/book.controller')
 
-/* GET home page. */
-router.get('/', async function (req, res, next) {
-	res.render('index.njk', { page_title: 'Local Library App' })
-})
-// Validate and let user in
-router.post('/validate', async (req, res) => {
-	res.render('dashboard.njk')
-})
 // Create a new Customer
 router.post('/books', books.create)
 
